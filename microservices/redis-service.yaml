@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  labels:
+    name: redis-service
+    app: demo-voting-app
+spec:
+  ports:
+    - port: 6379  # expose service port, exposed in inside cluster
+      targetPort: 6379  # listen port from pod
+  selector:
+    name: redis-pod
+    app: demo-voting-app
+
